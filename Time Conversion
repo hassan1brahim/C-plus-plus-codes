@@ -1,0 +1,52 @@
+#include <bits/stdc++.h>
+#include <string>
+#include <sstream>
+using namespace std;
+
+string timeConversion(string s){
+    std::string temp = " "; std::string temp1; int num;
+    if(s[s.length() - 2] == 'A'){
+        if(s[0] == '1' && s[1] == '2'){
+            s[0] = '0'; 
+            s[1] = '0';
+           s.erase(8, 2); // Will erase the last two letters from the string
+            return s;
+        }else{
+            s.erase(8, 2);
+            return s;
+        }
+    }else{
+        if(s[0] == '1' && s[1] == '2'){
+            s.erase(8, 2);
+            return s;
+        }else{
+          temp = s[0]; // for some reason temp = s[1] + s[2] didnt seem to
+          //work
+          temp += s[1];
+            stringstream strm(temp); // will convert string to int
+            strm >> num; // will assign that int to num variable
+            num += 12;
+            temp1 = std::to_string(num); // will covert int to string
+            s[0] = temp1[0];
+            s[1] = temp1[1];
+            s.erase(8, 2);
+            return s;
+        }
+    }
+}
+
+int main()
+{
+    ofstream fout(getenv("OUTPUT_PATH"));
+
+    string s;
+    getline(cin, s);
+
+    string result = timeConversion(s);
+
+    fout << result << "\n";
+
+    fout.close();
+
+    return 0;
+}
