@@ -1,0 +1,111 @@
+#include <bits/stdc++.h>
+#include <iostream>
+using namespace std;
+
+string ltrim(const string &);
+string rtrim(const string &);
+
+int ReturnASCII(char c){ //User defined function for ASCII
+    int bi = 97; int si = 65;
+  if(c >= 97 && c <=122) {
+    if(c == bi) return bi;
+    else while( c != bi) bi++; return bi;
+  }else{
+    if(c == si) return si;
+    else{
+      while( c != si) si++; 
+      return si;
+    }
+  } 
+}
+int Return(char c){ //User defined function for Return
+    int bi = 97; int si = 65;
+  if(c >= 97 && c <=122) {
+    if(c == bi) return 1;
+    else while( c != bi) bi++; return 1;
+  }else{
+    if(c == si) return 0;
+    else{
+      while( c != si) si++; 
+      return 0;
+    }
+  } 
+}
+
+string caesarCipher(string s, int k) {
+    int index;
+    for(int i = 0; i <= s.length(); i++){
+        if((s[i] >= 97 && s[i] <=122) || (s[i] >= 65 && s[i] <= 90)){ 
+            if(Return(s[i])){ //If return = 1, than its a small letter, a, return is 
+            // user defined function else if return = 0, than its a big letter, A
+                index = ReturnASCII(s[i]) + k; //ReturnASCII is a user defined function 
+                //which returns the ASCII value of a char. 
+                if(index > 122){ 
+                    index-=122; //Meaning like if its z(122) + k(100) so we can get 
+                //that 100 or if its y(121) than 99, this 100/99 is the number we have 
+                //to move through the letters a to z
+                    while(index > 26) index -= 26; //Will Reduce that 100 to something 
+                    //in the range 1-26 and adding 96 will make it from the range  
+                    s[i] = char(96 + index); // 97-122 so we can allot it a character
+                }else s[i] = char(index); //Char is built in function which returns 
+                //ASCII value of an integer
+            }else{
+                index = ReturnASCII(s[i]) + k;
+                 if(index > 90){
+                    index-=90;
+                    while(index > 26) index -= 26;
+                    s[i] = char(64 + index);
+                }else s[i] = char(index);
+            }
+        }
+    }
+    return s;
+}
+
+int main()
+{
+    ofstream fout(getenv("OUTPUT_PATH"));
+
+    string n_temp;
+    getline(cin, n_temp);
+
+    int n = stoi(ltrim(rtrim(n_temp)));
+
+    string s;
+    getline(cin, s);
+
+    string k_temp;
+    getline(cin, k_temp);
+
+    int k = stoi(ltrim(rtrim(k_temp)));
+
+    string result = caesarCipher(s, k);
+
+    fout << result << "\n";
+
+    fout.close();
+
+    return 0;
+}
+
+string ltrim(const string &str) {
+    string s(str);
+
+    s.erase(
+        s.begin(),
+        find_if(s.begin(), s.end(), not1(ptr_fun<int, int>(isspace)))
+    );
+
+    return s;
+}
+
+string rtrim(const string &str) {
+    string s(str);
+
+    s.erase(
+        find_if(s.rbegin(), s.rend(), not1(ptr_fun<int, int>(isspace))).base(),
+        s.end()
+    );
+
+    return s;
+}
