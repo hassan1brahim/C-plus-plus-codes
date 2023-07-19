@@ -1,0 +1,44 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+void findZigZagSequence(vector < int > a, int n){
+    sort(a.begin(), a.end());
+    int mid = int((n + 1)/2) - 1;   // Middle wasnt actually the middle
+    swap(a[mid], a[n-1]); // This replaces the middle and last element
+    int st = mid + 1; 
+    int ed = n - 2;
+    while(st <= ed){
+        swap(a[st], a[ed]); // This replaces the (middle + 1) and (n - 2) 
+        //element which is also the second last element so eventually the 
+        //the data is in zigzag pattern (Ascending Middle Descending). 
+        //Eventually all data items are swapped. eg 48, 49, 50, 99, 98
+        //Obv in the case where n = 99 since n will always be odd 
+        st++; // This moves the (middle + 1) to the next item
+        ed--; // This moves the (n - 2) to the third last element and /
+        //so on 
+    }
+    for(int i = 0; i < n; i++){
+        if(i > 0) cout << " ";
+        cout << a[i];
+    }
+    cout << endl;
+}
+
+int main() {
+    int n, x;
+    int test_cases;
+    cin >> test_cases;
+
+    for(int cs = 1; cs <= test_cases; cs++){
+        cin >> n;
+        vector < int > a;
+        for(int i = 0; i < n; i++){
+            cin >> x;
+            a.push_back(x);
+        }
+        findZigZagSequence(a, n);
+    }
+}
+
+
+
