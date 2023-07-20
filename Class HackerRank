@@ -1,0 +1,63 @@
+#include <iostream>
+#include <sstream>
+#include <string>
+using namespace std;
+
+class Student{
+private:
+    int age, standard;
+    std::string fname, lname;
+public:
+    void set_age(int sage){
+        age = sage;
+    }
+    int get_age(){
+        return age;
+    }
+    void set_standard(int sstandard){
+        standard = sstandard;
+    }
+     int get_standard(){
+        return standard;
+    }
+    void set_first_name(std::string f){
+        fname = f;
+    }
+     std::string get_first_name(){
+        return fname;
+    }
+     void set_last_name(std::string l){
+        lname = l;
+    }
+    std::string get_last_name(){
+        return lname;
+    }
+    std::string to_string(){
+        std::string result = std::to_string(age);
+        result = result + "," + fname;
+        result = result + "," + lname;
+        result = result + "," + std::to_string(standard);
+        return result;
+    }
+};
+
+int main() {
+    int age, standard;
+    string first_name, last_name;
+    
+    cin >> age >> first_name >> last_name >> standard;
+    
+    Student st;
+    st.set_age(age);
+    st.set_standard(standard);
+    st.set_first_name(first_name);
+    st.set_last_name(last_name);
+    
+    cout << st.get_age() << "\n";
+    cout << st.get_last_name() << ", " << st.get_first_name() << "\n";
+    cout << st.get_standard() << "\n";
+    cout << "\n";
+    cout << st.to_string();
+    
+    return 0;
+}
