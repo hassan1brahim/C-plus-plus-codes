@@ -98,15 +98,15 @@ using namespace std;
      cout << biggestsofar << " " << smol << " " << sbig << endl;*/
 
      // Task 12
-     /*int num = 0, repeat = 0, i = 0;
+    /*int num = 0, repeat = 0, i = 0, number[200], count = 0;
      cout << "Enter Number: "; cin >> num;
-     int repeat = num;
      while(num > 0 ){
-        if(i % 2 == 0) repeat = num;
-        else if(num != repeat) cout << num << endl;
+        if(i % 2 == 0) {repeat = num; }
+        else if(num == repeat) {number[count] = num; count++;} 
+        i++; 
         cout << "Enter Number: "; cin >> num;
      }
-     cout << repeat << endl;**/
+     for(int i = 0; i <  count; i++) cout << number[i] << endl;*/
 
      //Task 13
      /*string word = "greatness", newword; int i = 1;
