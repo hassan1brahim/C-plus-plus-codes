@@ -98,13 +98,15 @@ using namespace std;
      cout << biggestsofar << " " << smol << " " << sbig << endl;*/
 
      // Task 12
-     /*int num = 0, repeat = 0;
+     /*int num = 0, repeat = 0, i = 0;
      cout << "Enter Number: "; cin >> num;
      int repeat = num;
      while(num > 0 ){
+        if(i % 2 == 0) repeat = num;
+        else if(num != repeat) cout << num << endl;
         cout << "Enter Number: "; cin >> num;
      }
-     cout << repeat << endl;*/
+     cout << repeat << endl;**/
 
      //Task 13
      /*string word = "greatness", newword; int i = 1;
@@ -146,6 +148,22 @@ using namespace std;
      //No code required
 
      //Task 18
-     
+     /*int x = 91, y = 9;
+          switch(x >= y){
+          case true:
+                switch(x == y){
+                    case 1:
+                    cout<< "\n First number is equal than the second number" << endl;
+                    break;
+                    case 0:
+                    cout<< "\n First number is greater than the second number" << endl;
+                    break;
+          }
+          break;
+            case false:
+               cout<< "\n First number is lesser than the second number" << endl;
+               break;
+          }
+          return 0;*/
 
  }
