@@ -107,6 +107,25 @@ using namespace std;
         cout << "Enter Number: "; cin >> num;
      }
      for(int i = 0; i <  count; i++) cout << number[i] << endl;*/
+//ALTERNATIVELY TASK 12
+
+ /* int Num = 0, PrevNum = 0;
+
+     cout << "Enter Number: "; 
+     cin >> Num;
+
+     while(Num > 0 ){
+
+        PrevNum = Num;
+
+        cout << "Enter Number: "; 
+        cin >> Num;
+
+        if(Num == PrevNum) cout << PrevNum << endl;
+
+     }
+
+    return 0;*/
 
      //Task 13
      /*string word = "greatness", newword; int i = 1;
