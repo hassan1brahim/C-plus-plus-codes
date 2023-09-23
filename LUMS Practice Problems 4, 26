@@ -1,0 +1,151 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+ int main(){
+    //Task 1
+    
+    /*string fname= "a", lname = "Ibrahim"; int count = 0, index = 0;
+    bool isSubtr = 0, result = 0;
+    for(int i = 0; i <  lname.length(); i++){
+        while(index < fname.length()){
+        isSubtr = fname[index] == lname[i] ? 1 : 0;
+        index++; count += isSubtr;
+        }
+        index = 0;
+    }
+    cout << (count ? "It is a substring": "It is not a substring") << endl;*/
+
+    //Task 2
+    /*string word = "I am a student of SSE, which is a part of lums"; int index = 0;
+    for(int i = 0; i < word.length(); i++) if(word[i] == ' ') index++;
+    cout <<"There are " <<index +1 << " words\n";*/
+
+    //Task 3
+    /*string word = "NASSAH", newword;
+    for(int i = word.length() - 1; i >= 0; i= i-1) newword += word[i];
+    cout << newword << endl;*/
+    
+    //Task 4
+    /*int num = 0; int index;
+    while(index <= 20){
+        if(num % 2 != 0) {cout << num << endl; index++;}
+        num++;
+    }*/
+
+    // Task 5
+    /*int index = 100;
+    while(index > 20){
+        if(index % 3 == 0) cout << index << endl; index--;
+    }*/
+    // Task 6
+    /*int num = 18, num1 = 30, index = 0, count = 1;
+    while(count <= abs(num1) ){
+        if(num % count == 0 && num1 % count == 0) index++;
+        count++;
+    }
+    cout << index << endl;*/
+
+    // Task 7
+    /*int num = 22, count = 1, index = 0;
+    while(count <= num){
+        if(num % count == 0) index++;
+        count++;
+    }
+    if(index < 3)  cout << "Prime No." << endl;
+    else cout << "Not a Prime number" << endl;*/
+
+    //Task 8
+    /*int num1  = 30, count = 0,index  = 1, num2 = 55;
+    while(count <= max(num1, num2)) {
+    if(num1 % count == 0 && num2 % count == 0) index = count; count++;
+    }
+    cout << index << endl;*/
+
+    //Task 9
+    /*int num = 0, positive = 0, negative = 0;
+    cout << "Enter Number: "; cin >> num;
+    while(num != 0){
+    if(num > 0) positive += num;
+    else negative += num;
+        cout << "Enter Number: "; cin >> num;
+    }
+    cout << positive << " " << negative << endl;
+    return 0;*/
+     
+    //Task 10
+     /*int num = 0,biggestosofar = 0;
+     cout << "Enter Number: "; cin >> num;
+     int smol = num;
+     while(num > 0){
+         if(num > biggestosofar) biggestosofar = num;
+         else if(num < smol) smol = num;
+         cout << "Enter Number: "; cin >> num;
+     }
+     cout << biggestosofar << " " << smol << endl;*/
+
+     //Task 11
+     /*int num = 0,biggestsofar = 0, sbig = 0;
+     cout << "Enter Number: "; cin >> num;
+     int smol = num;
+     while(num > 0){
+         if(num > biggestsofar){
+            sbig = biggestsofar;
+            biggestsofar = num;
+         }else if(num < smol) smol = num;
+         cout << "Enter Number: "; cin >> num;
+     }
+     cout << biggestsofar << " " << smol << " " << sbig << endl;*/
+
+     // Task 12
+     /*int num = 0, repeat = 0;
+     cout << "Enter Number: "; cin >> num;
+     int repeat = num;
+     while(num > 0 ){
+        cout << "Enter Number: "; cin >> num;
+     }
+     cout << repeat << endl;*/
+
+     //Task 13
+     /*string word = "greatness", newword; int i = 1;
+     while(i <= word.length()){
+        newword += word[i];
+        i+= 2;
+     }
+     cout << newword << endl;*/
+
+     //Task 14
+     /*string word = "SobAn AlI", newword; int i = 0;
+     while(word[i] != '\0'){
+        if(word[i]+'\0' >= 65 && word[i]+'\0' <= 90 ) newword += word[i];
+        i++;
+     } 
+     cout << newword << endl;*/
+
+     //Task 15
+    /*string word = "SobAnAlI"; int i = 0;
+     while(word[i] != '\0'){
+        if(word[i]+'\0' >= 65 && word[i]+'\0' <= 90 ) word[i] += 32;
+        else word[i] -= 32;
+        i++;
+     } 
+     cout << word << endl;*/
+
+     //Task 16
+     /*string word = "SobanAli"; int i = 0, count = 0;
+     while(word[i] != '\0'){
+        if(word[i] == 'a' || word[i] == 'e' || word[i] == 'i' || word[i] == 'o' ||word[i] == 'u' ||
+        word[i] == 'A' ||word[i] == 'E' ||word[i] == 'I' ||word[i] == 'O' ||word[i] == 'U'){
+            count++;
+        }
+        i++;
+     }
+     cout << count;*/
+
+     //Task 17
+     //No code required
+
+     //Task 18
+     
+
+ }
