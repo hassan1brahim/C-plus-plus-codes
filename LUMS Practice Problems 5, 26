@@ -1,0 +1,231 @@
+#include <iostream>
+using namespace std;
+
+//Task 4
+/*int factorial(int Num){
+    if(Num == 0 || Num == 1 ) return 1;
+    else return Num * factorial( Num - 1);
+}*/
+
+
+int main(){
+    // Task 1 (Going left to right)
+    /*int Index = 6;
+    while(Index > 0){
+        for(int i = 0; i < Index; i++) cout << "*";
+        Index--; cout << "\n";
+    }*/
+
+    //--------------------------------------------------
+
+    /*int Index = 0;
+    while(Index <= 6){
+        for(int i = 0; i < Index; i++) cout << "*";
+        Index++; cout << "\n";
+    }*/
+
+    //--------------------------------------------------
+
+    /*int SpaceIndex = 6, SymbolIndex = 0;
+    while(SpaceIndex >= 0){
+        for(int i = 0; i < SpaceIndex; i++) cout << " ";
+        for(int i = 0; i < SymbolIndex; i++) cout << "*";
+        SpaceIndex--; SymbolIndex++; cout << "\n";
+    }*/
+
+    //--------------------------------------------------
+
+    /*int num = 5;
+    while(num > 0){
+        for(int i = 1; i <= num; i++){
+            cout << i << " ";
+        }
+        cout << endl;
+        num--;
+    }*/
+
+    //--------------------------------------------------
+
+    /*int num = 5, index = 1;
+    while(index <= num){
+        for(int i = 1; i <= num; i++){
+            cout << index;
+        }
+        cout << '\n'; index++;
+    }*/
+
+    //--------------------------------------------------
+
+    /*int num = 6, index = 1, count = num;
+    while(index <= num){
+        for(int i = 1; i <= count; i++){
+            cout << index;
+        }
+        cout << '\n'; 
+        index++; count--;
+    }*/
+
+    //--------------------------------------------------
+
+    /*int num = 6, index = 1, count = 1;
+    while(index <= num){
+        for(int i = 1; i <= count; i++){
+            cout << index;
+        }
+        cout << '\n'; 
+        index++; count++;
+    }*/
+
+     //--------------------------------------------------
+
+    /*char letter = 'G', index = 'A', scount = index; int count = 7;
+    while(scount <= letter){
+        for(int i = 1; i <= count; i++){
+            cout << index;
+            index++;
+        }
+        scount++;
+        cout << '\n'; 
+        index = 'A'; count--;
+    }*/
+
+    //--------------------------------------------------
+
+    /*int number = 55, dash_index = 1, space_index = number;   
+    while(dash_index < number){
+        for(int i = 0; i < space_index; i++) cout << " ";
+        for(int i = 0; i < dash_index; i++) cout << "* ";
+        dash_index+= 2; space_index-= 2; cout << endl;
+    }
+    dash_index = number - 1; space_index = 1;
+    while(dash_index >= 0){
+        for(int i = 0; i < space_index; i++) cout << " ";
+        for(int i = 0; i <= dash_index; i++) cout << "* ";
+    dash_index-= 2; space_index+= 2; cout << endl;
+    }*/
+
+    //--------------------------------------------------
+
+   /* int num = 49, asterick_index = num / 2, dash_index = 1, index = 0;
+
+    for(int i = 0; i < num; i++) cout << "* "; // Printing the first line
+
+    cout << endl;
+
+    while(asterick_index > 1){
+
+        for(int i = 0; i < asterick_index; i++) cout << "* ";
+
+        for(int i = 0; i < dash_index; i++) cout << " ";
+
+        for(int i = 0; i < asterick_index; i++) cout << "* ";
+
+        cout << endl;
+
+        index++; 
+        dash_index+= 4; 
+        asterick_index-=1;
+    }
+
+      while(asterick_index < num/2){
+
+        for(int i = 0; i < asterick_index; i++) cout << "* ";
+
+        for(int i = 0; i < dash_index; i++) cout << " ";
+
+        for(int i = 0; i < asterick_index; i++) cout << "* ";
+
+        cout << endl;
+
+        index++;
+        dash_index-= 4;
+        asterick_index+=1;
+      }
+
+      for(int i = 0; i < num; i++) cout << "* ";*/ // Printing the last line
+
+    //--------------------------------------------------
+
+    /*int number = 9, num_index = 1, space_index = (2 * number ) - 2;  
+
+    for(int i = 0; i < space_index; i++) cout << " ";
+
+    cout << "  " << num_index << endl; 
+
+    while(num_index < number){
+
+        for(int i = 0; i < space_index; i++) cout << " "; //Adding the spaces
+
+        for(int i = 1; i <= num_index; i++) cout << i << " "; // Adding the numbers before the middle number
+
+        for(int i = num_index; i <= num_index; i++) cout << i + 1 << " "; // Adding the middle number
+
+        for(int i = num_index; i > 0; i--) cout << i << " "; // Adding the number after the middle number
+
+        num_index++; space_index-= 2; cout << endl; //Decrementing spaces and incrementing
+    }
+
+    num_index = number - 2; space_index+=4;
+
+    while(num_index >= 0){
+
+        for(int i = 0; i < space_index; i++) cout << " ";
+
+        for(int i = 1; i <= num_index; i++) cout << i << " ";
+
+        for(int i = num_index; i <= num_index; i++) cout << i + 1 << " ";
+
+        for(int i = num_index; i > 0; i--) cout << i << " ";
+
+        num_index--; space_index+= 2; cout << endl;
+    }*/
+    //--------------------------------------------------
+
+    /*int num = 49, second_num = (num/2) + 2, third_num = (num/4) + 2, space_index = (2 * num);
+
+    int index = 1;
+
+    for(int i = 0; i < num; i++) cout << " ";
+
+    for(int i = 0; i < num; i++) cout << "* ";
+
+    cout << endl;
+
+    for(int i = 0; i < second_num; i++) cout << " ";
+    for(int i = 0; i < second_num; i++) cout << "* ";
+    cout << endl;
+    for(int i = 0; i <= space_index - third_num; i++) cout << " ";
+    for(int i = 0; i < third_num; i++) cout << "* ";
+    cout << endl;
+    while(space_index >= num){
+        for(int i = 0; i < space_index; i++) cout << " ";
+        for(int i = 0; i < index; i++) cout << "* ";
+        cout << endl; index+=2; space_index -= 2;
+    }*/
+
+     //--------------------------------------------------
+//Task 2 and Task 3; Remove Varible Num3 to get solution for Task2
+    /*int Num1 = 57, Num2 = 75, Num3 = 102, Count = 0, Index = 0;
+    while(Count <= Num2){
+
+        if(Num1 % Count == 0 && Num2 % Count == 0 && Num3 % Count == 0) Index = Count;
+
+        Count++;
+
+    }
+
+    cout << Index << endl;*/
+
+    //Task 4
+
+    /*float Index = 0.0; double Sum = 0.0;
+    while(Index <= 10){
+
+        Sum += (Index / factorial(Index));
+        Index += 1.0;
+
+    }
+    cout << Sum << endl;*/
+
+    return 0;
+}
