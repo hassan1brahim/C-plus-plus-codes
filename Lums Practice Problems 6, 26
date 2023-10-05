@@ -71,5 +71,75 @@ int main(){
     // for(int i = 1; i <= 12; i++){
     //     if(prime(i) == 0) cout << i << endl;
     // }
+//tic tac toe game 
+//Task2
+    
+    // char one, two, three, four, five, six, seven, eight, nine; 
+    // int countx = 0, counto = 0; bool player1 = 0, player2 = 0;
+    // cout << "Enter value for block one: "; cin >> one;
+    // cout << "Enter value for block two: "; cin >> two;
+    // cout << "Enter value for block three: "; cin >> three;
+    // cout << "Enter value for block four: "; cin >> four;
+    // cout << "Enter value for block five: "; cin >> five;
+    // cout << "Enter value for block six: "; cin >> six;
+    // cout << "Enter value for block seven: "; cin >> seven;
+    // cout << "Enter value for block eight: "; cin >> eight;
+    // cout << "Enter value for block nine: "; cin >> nine;
+    // if(one == '-') one = ' ';
+    // if(two == '-') two = ' ';
+    // if(three == '-') three = ' ';
+    // if(four == '-') four = ' ';
+    // if(five == '-') five = ' ';
+    // if(six == '-') six = ' ';
+    // if(seven == '-') seven = ' ';
+    // if(eight == '-') eight = ' ';
+    // if(nine == '-') nine = ' ';
+    // cout << one << " | " << two << " | " << three << endl;
+    // cout << "----------" << endl;
+    // cout << four << " | " << five << " | " << six << endl;
+    //  cout << "----------" << endl;
+    // cout << seven << " | " << eight << " | " << nine << endl;
+    //  cout << "----------" << endl;
+    // if(one == five && five == nine && one == 'x'){
+    //     player1 = 1; countx++;
+    // }else if(three == five && five == seven && five == 'x'){
+    //     player1 = 1; countx++;
+    // }else if(one == four && four == seven && one == 'x'){
+    //     player1 = 1; countx++;
+    // }else if(one == five && five == nine && one == 'x'){
+    //     player1 = 1; countx++;
+    // }else if(two == five && five == eight && five == 'x'){
+    //     player1 = 1; countx++;
+    // }else if(three == six && six == nine && six == 'x'){
+    //     player1 = 1; countx++;
+    // }else if(one == two && two == three && one == 'x'){
+    //     player1 = 1; countx++;
+    // }else if(four == five && five == six && six == 'x'){
+    //     player1 = 1; countx++;
+    // }else if(eight == nine && seven == nine && nine == 'x'){
+    //    player1 = 1; countx++;
+    // }else if(one == five && five == nine && one == 'o'){
+    //     player2 = 1; counto++;
+    // }else if(three == five && five == seven && five == 'o'){
+    //     player2 = 1; counto++;
+    // }else if(one == four && four == seven && one == 'o'){
+    //     player2 = 1; counto++;
+    // }else if(one == five && five == nine && one == 'o'){
+    //     player2 = 1; counto++;
+    // }else if(two == five && five == eight && five == 'o'){
+    //     player2 = 1; counto++;
+    // }else if(three == six && six == nine && six == 'o'){
+    //     player2 = 1; counto++;
+    // }else if(one == two && two == three && one == 'o'){
+    //     player2 = 1; counto++;
+    // }else if(four == five && five == six && six == 'o'){
+    //     player2 = 1; counto++;
+    // }else if(eight == nine && seven == nine && nine == 'o'){
+    //     player2 = 1; counto++;
+    // }
+    // if(countx >= counto - 1 && countx <= counto + 1 && player1 == 1) cout << "Player 2 Wins" << endl;
+    // else if(counto >= countx - 1 && counto <= countx + 1 && player2 == 1) cout << "Player 1 Wins" << endl;
+    // else if(countx + counto == 9 && player1 == 0 && player2 == 0) cout << "It is a tie" << endl;
+    // else cout << "Invalid Grid" << endl;
     return 0;
 }
