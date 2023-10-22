@@ -1,0 +1,63 @@
+#include <iostream>
+using namespace std;
+
+double area(double r){
+    return 4 * (22 / 7.0) * r * r;
+}
+double volume(double r){
+    return (4 / 3.0) * (22 / 7.0) * r * r * r;
+}
+void calculateRoots(int a, int b, int c){
+    int root1, root2;
+    if((b * b) > (4 * a * c) ){
+        root1 = -(b / (2 * a)) + (sqrt((b * b) - (4 * a * c) ))/ (2 * a);
+        root2 = -(b / (2 * a)) - (sqrt((b * b) - (4 * a * c) ))/ (2 * a);
+        cout << "The First root is: " << root1 << endl;
+        cout << "The Second root is: " << root2 << endl;
+    }else{
+        cout << "Undefined" << endl;
+    }
+}
+
+void four_digit_number(int n){
+    int sum = 0, index = 0, temp = n;
+    while(temp > 0){
+        temp /= 10;
+        index++;
+    }
+    for(int i = 0; i < index; i++){
+        sum += n % 10;
+        n /= 10;
+    }
+    cout << sum << endl;
+}
+
+void smth(double a, double b, double c){
+    double median = 0.0;
+    if( a <= max(b, c) && a >= min(b, c)) median = a;
+    if( b <= max(a, c) && b >= min(a, c)) median = b;
+    if( c <= max(b, a) && c >= min(b, a)) median = c;
+    cout << "The median of " << a << ", " << b << ", " << c << " is " << median << endl;
+}
+
+int main(){
+    // Task 1
+    // double r;
+    // cout << "Enter Radius: "; cin >> r;
+    // cout << "The Area is: " << area(r) << " and the Volume is: " << volume(r) << endl;
+
+    //Task 2
+    //calculateRoots(1, 0, 4);
+
+    //Task 3
+    // int n;
+    // cout << "Enter Number: "; cin >> n;
+    // if( n > 999 && n <= 9999){
+    //     four_digit_number(n);
+    // }else{ cout << "Number is not 4 digit" << endl;}
+
+    //Task 4
+    // double a = 41.52, b = 27.18, c= 96.03;
+    // smth(a, b, c);
+    return 0;
+}
