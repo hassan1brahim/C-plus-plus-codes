@@ -1,0 +1,62 @@
+#include <iostream>
+
+using namespace std;
+
+int main(){
+    int n, et; char c;
+    cout << "Enter Total Time: ";
+    cin >> n;
+    cout << "Enter Elapsed Time: ";
+    cin >> et;
+    cout << "Enter Character: ";
+    cin >> c;
+    int temp = n, newtemp = n - et;
+    int space_index = 0, dot_index = 2*n - 1;
+    for(int i = 0; i < 2*n + 1; i++ ) cout << '-';
+     cout << endl;
+    while(temp > 0){
+        for(int i = 0; i < space_index; i++) cout << ' ';
+        cout << "\\";
+        if(n % 2 == 0 && et % 2 == 0){
+        if(newtemp < temp) for(int i = 0; i < dot_index; i++) cout << ' ';
+        else for(int i = 0; i < dot_index; i++) cout << c;
+        }else if(n % 2 == 1 && et % 2 == 0){
+            if(newtemp > temp - 1) for(int i = 0; i < dot_index; i++) cout << c;
+        else for(int i = 0; i < dot_index; i++) cout << ' ';
+        }else if(n % 2 == 0 && et % 2 == 1){
+            if(newtemp >= temp) for(int i = 0; i < dot_index; i++) cout << c;
+        else for(int i = 0; i < dot_index; i++) cout << ' ';
+        }else if(n % 2 == 1 && et % 2 == 1){
+            if(newtemp >= temp) for(int i = 0; i < dot_index; i++) cout << c;
+        else for(int i = 0; i < dot_index; i++) cout << ' ';
+        }
+        cout << "/" << endl;
+        dot_index -= 2; space_index++; temp--;
+    }
+    dot_index+=2; space_index--; temp = 0; 
+    while(temp < n){
+        for(int i = 0; i < space_index; i++) cout << ' ';
+        cout << "/";
+       if(n % 2 == 0 && et % 2 == 0){
+        if(newtemp > temp) for(int i = 0; i < dot_index; i++) cout << ' ';
+        else for(int i = 0; i < dot_index; i++) cout << c;
+        }else if(n % 2 == 1 && et % 2 == 0){
+            if(newtemp - 1 < temp) for(int i = 0; i < dot_index; i++) cout << c;
+        else for(int i = 0; i < dot_index; i++) cout << ' ';
+        }else if(n % 2 == 0 && et % 2 == 1){
+            if(newtemp <= temp) for(int i = 0; i < dot_index; i++) cout << c;
+        else for(int i = 0; i < dot_index; i++) cout << ' ';
+        }else if(n % 2 == 1 && et % 2 == 1){
+            if(newtemp <= temp) for(int i = 0; i < dot_index; i++) cout << c;
+        else for(int i = 0; i < dot_index; i++) cout << ' ';
+        }
+        cout << "\\" << endl;
+        dot_index += 2; space_index--;
+        temp++;
+    }
+    for(int i = 0; i < 2*n + 1; i++ ) cout << '-';
+    cout << endl;
+}
+
+
+
