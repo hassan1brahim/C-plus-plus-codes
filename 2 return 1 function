@@ -1,0 +1,46 @@
+#include <iostream>
+using namespace std;
+
+int storage = 1;
+int max1, min1;
+
+int FindMinMax(){
+	int num;
+	cout << "Enter Number: ";
+	cin >> num;
+	max1 = num; min1 = num;
+	while(num != -1){
+		cout << "Enter Number: ";
+		cin >> num;
+
+		if(num != -1){
+			if(max1 < num) max1 = num;
+			else if(min1 > num) min1 = num;
+			}
+
+	}
+	int sum = abs(min1);
+	while(sum % 10 > 0){
+		storage *= 10;
+		sum /= 10;
+	}
+
+	storage *= 10;
+	sum = storage * abs(max1);
+	sum += abs(min1);
+	return sum;
+
+}
+
+int main(){
+	int result = FindMinMax();
+	cout << result << endl;
+
+	if(min1 < 0) cout << "Min is: " << -(result % storage) << endl;
+	else if(min1 > 0)  cout << "Min is: " << result % storage << endl;
+
+	if(max1 > 0) cout << "Max is: " << result / storage << endl;
+	else if(max1 < 0) cout << "Max is: " << -(result / storage) << endl;
+
+	return 0;
+}
