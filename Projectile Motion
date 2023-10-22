@@ -1,0 +1,40 @@
+#include <iostream>
+#include <cmath>
+#include <stdlib.h>
+using namespace std;
+
+int main(){
+    double g = 9.8, dt = 0.01, t = 0, v = 0, s = 0, max_height = 0;
+    int index = 0, count = 0; bool outputted = 0;
+    char value;
+    cout << "Enter Velocity (50-150): "; cin >> v;
+    int storage = v;
+    while(s >= 0){
+        v += -g * dt;
+        s += v * dt;
+        if(max_height < s) max_height = s;
+        t += dt;
+    }
+    index = 0; v = storage; s = 0; t = 0; 
+    while( s >= 0  && value != '0'){
+        v += -g * dt;
+        s += v * dt;
+        index++;
+                t += dt;
+        if(index % 100 == 0){
+        cout << "The max height reached by the projectile is " << max_height << endl;
+        cout << "The Value of S = " << s << " at time: =  " << t << endl;
+        for(int i = 0; i <= round(max_height) + 10; i += 10 ){
+            cout << i;
+            if(abs(round(s) - 5) <= i && abs(round(s) + 5 ) >= i && outputted == 0 ){ 
+                cout << "   *";
+                outputted = 1;
+            }
+            cout << endl;
+        }
+        outputted = 0;
+        cout << "Enter Value: "; cin >> value;
+        system("clear"); 
+        }
+    }
+}
