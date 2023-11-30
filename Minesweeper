@@ -2,8 +2,6 @@
 #include <iomanip>
 #include <random>
 #include <ctime>
-#include <cmath>
-#include <fstream>
 using namespace std;
 
 char FrontEnd[100][100];
@@ -13,8 +11,7 @@ const int Size = 9;
 
 // Implement HighScore feature through file handling
 //  Make first move better, so that a group of numbers are available
-//  Keep playing the game
-//
+//  Flag Limit
 
 void FillArray();  // tested
 void PrintTable(); // tested
@@ -23,12 +20,9 @@ bool ColCheck(int col);
 int BombCount();
 int FlagCount();
 bool BombCheck(int row, int col);
-bool IsUsed(int row, int col);
 void Space();
 bool isSpace(int row, int col);
-void File(int score, int &playtime);
-void CheckScore(int score, int playtime);
-void GeneratingMines();
+void GeneratingMines(); // tested
 int CountBomb(int row, int col);
 void Assign();
 bool isFlag(int row, int col);
@@ -38,13 +32,10 @@ void PlayMineCraft();
 
 int main()
 {
-
     PlayMineCraft();
 }
-
 void PlayMineCraft()
 {
-
     FillArray();
     PrintTable();
     GeneratingMines();
@@ -54,157 +45,98 @@ void PlayMineCraft()
 }
 
 void TakeInput(int IntialBombCount)
-
 {
     int row, col;
     bool GameOver = 0, isZero = 1;
     char Decision;
-    bool isFirstMove = 1;
-    if (isFirstMove) // only for flag rn
+    // Game over to stop the loop if
+    while (!GameOver && AnyMinesLeft())
     {
-        isFirstMove = 0;
-        cout << "Do you want to flag or not ? (Y/N): ";
-        cin >> Decision;
-        if (Decision == 'Y' || Decision == 'y' || Decision == 'N' || Decision == 'n')
+        if (FlagCount() < 10)
         {
-            if (Decision == 'Y' || Decision == 'y')
+            cout << "Do you want to flag or not ? (Y/N): ";
+            cin >> Decision;
+            if (Decision == 'Y' || Decision == 'y' || Decision == 'N' || Decision == 'n')
             {
-                cout << "Enter Coordinates (row col): ";
-                cin >> row >> col;
-                if (BombCheck(row, col))
+                if (Decision == 'Y' || Decision == 'y')
                 {
-                    int i = 0, j = 0;
-                    while (BombCheck(i, j) || isSpace(i, j))
-                    {
-                        j++;
-                        if (j == Size - 1)
-                        {
-                            j = 0;
-                            i++;
-                        }
-                    }
-                    char temp = BackEnd[row][col];
-                    BackEnd[row][col] = BackEnd[i][j];
-                    BackEnd[i][j] = temp;
-                    FrontEnd[row][col] = 'F'; // to show
-                    BackEnd[row][col] = 'F';  // So no bomb there either, to actually remove the bomb
-                    system("clear");
-                    PrintTable();
-                }
-            } // else{ // if first click is a space
-
-            // }// end bracker of space else
-        } // end bracket of decision if
-    }     // end bracket of is not first move
-
-    else
-    {
-        // Game over to stop the loop
-        while (!GameOver && AnyMinesLeft())
-        {
-            if (FlagCount() < 10)
-            {
-                cout << "Do you want to flag or not ? (Y/N): ";
-                cin >> Decision;
-                if (Decision == 'Y' || Decision == 'y' || Decision == 'N' || Decision == 'n')
-                {
-                    if (Decision == 'Y' || Decision == 'y')
-                    {
-                        cout << "Enter Coordinates (row col): ";
-                        cin >> row >> col;
-                        if (RowCheck(row) && ColCheck(col) && isSpace(row, col))
-                        { // will show all the spaces if 0 clicked
-                            FrontEnd[row][col] = ' ';
-                            system("clear");
-                            PrintTable();
-                        }
-                        else
-                        {
-                            if (RowCheck(row) && ColCheck(col) && !isFlag(row, col) && !isSpace(row, col) && !IsUsed(row, col))
-                            {
-                                FrontEnd[row][col] = 'F'; // to show
-                                BackEnd[row][col] = 'F';  // So no bomb there either, to actually remove the bomb
-                                system("clear");
-                                PrintTable();
-                            }
-                            else
-                            {
-                                cout << "Invalid Input" << endl; // if row, col is out of array, or its a flag or space than invalid input
-                                PrintTable();
-                                // ofce the first space will just open all the other spaced but that part of the code will only work
-                                //  for the first space
-                            }
-                        }
+                    cout << "Enter Coordinates (row col): ";
+                    cin >> row >> col;
+                    if (isSpace(row, col) && isZero)
+                    { // will show all the spaces if 0 clicked
+                        Space();
+                        isZero = 0; // only once though
+                        PrintTable();
                     }
                     else
-                    { // if its not a flag
-                        cout << "Enter Coordinates (row col): ";
-                        cin >> row >> col;
-                        if (RowCheck(row) && ColCheck(col) && isSpace(row, col))
-                        { // will show space
-                            FrontEnd[row][col] = ' ';
-                            system("clear");
+                    {
+                        if (RowCheck(row) && ColCheck(col) && !isFlag(row, col) && !isSpace(row, col))
+                        {
+                            FrontEnd[row][col] = 'F'; // to show
+                            BackEnd[row][col] = 'F';  // So no bomb there either, to actually remove the bomb
                             PrintTable();
                         }
                         else
                         {
-                            if (RowCheck(row) && ColCheck(col) && !isFlag(row, col) && !isSpace(row, col) && !IsUsed(row, col))
-                            {
-                                if (!BombCheck(row, col))
-                                {
-                                    FrontEnd[row][col] = BackEnd[row][col];
-                                    BackEnd[row][col] = 'U';
-                                    system("clear");
-                                    PrintTable();
-                                }
-                                else
-                                { // if its a bomb, didnt need this for flag
-                                    system("clear");
-                                    cout << "You Loose, Game Over" << endl;
-                                    int score = abs(IntialBombCount - BombCount()), playtime = 0;
-                                    File(score, playtime);
-                                    CheckScore(score, playtime);
-                                    GameOver = 1;
-                                    PrintTable();
-                                }
-                            }
-                            else
-                            {
-                                system("clear");
-                                cout << "Invalid Input" << endl; // part of the choosing no flag if, wrong coordnates
-                                PrintTable();
-                            }
+                            cout << "Invalid Input" << endl; // if row, col is out of array, or its a flag or space than invalid input
+                            // ofce the first space will just open all the other spaced but that part of the code will only work
+                            //  for the first space
                         }
                     }
                 }
                 else
-                {
-                    cout << "Invalid Input" << endl; // part of the choosing yes/no if, wrong decision
-                    PrintTable();
+                { // if its not a flag
+                    cout << "Enter Coordinates (row col): ";
+                    cin >> row >> col;
+                    if (isSpace(row, col) && isZero == 1)
+                    {
+                        Space();
+                        isZero = 0;
+                        PrintTable();
+                    }
+                    else
+                    {
+                        if (RowCheck(row) && ColCheck(col) && !isFlag(row, col) && !isSpace(row, col))
+                        {
+                            if (!BombCheck(row, col))
+                            {
+                                FrontEnd[row][col] = BackEnd[row][col];
+                                PrintTable();
+                            }
+                            else
+                            { // if its a bomb, didnt need this for flag
+                                cout << "You Loose, Game Over" << endl;
+                                cout << "Your Score is " << abs(IntialBombCount - BombCount()) << endl;
+                                GameOver = 1;
+                            }
+                        }
+                        else
+                        {
+                            cout << "Invalid Input" << endl; // part of the choosing no flag if, wrong coordnates
+                        }
+                    }
                 }
             }
             else
-            { // part of the flag count if, if flag > 10
-                if (AnyMinesLeft())
-                { // mines are left, you loose, else you win
-                    system("clear");
-                    cout << "You Lose, Game Over" << endl;
-                    PrintTable();
-                }
-                else
-                {
-                    cout << "You Won" << endl;
-                    PrintTable();
-                }
-                int score = abs(IntialBombCount - BombCount()), playtime = 0;
-                File(score, playtime);
-                CheckScore(score, playtime);
-                GameOver = 1;
+            {
+                cout << "Invalid Input" << endl; // part of the choosing yes/no if, wrong decision
             }
+        }
+        else
+        { // part of the flag count if, if flag > 10
+            if (AnyMinesLeft())
+            { // mines are left, you loose, else you win
+                cout << "You Loose, Game Over" << endl;
+            }
+            else
+            {
+                cout << "You Won" << endl;
+            }
+            cout << "Your Score is " << abs(IntialBombCount - BombCount()) << endl;
+            GameOver = 1;
         }
     }
 }
-
 void FillArray()
 {   // Will Basically Fill the array for first time use, can also use
     // loops to fill the array again and again, kind of like reset
@@ -282,8 +214,8 @@ void GeneratingMines()
     }
 }
 
-bool RowCheck(int row) // To check row doesnt exceed size or are less than size
-{ 
+bool RowCheck(int row)
+{ // To check row doesnt exceed size or are less than size
 
     if (row >= Size || row < 0)
         return 0;
@@ -292,8 +224,8 @@ bool RowCheck(int row) // To check row doesnt exceed size or are less than size
         return 1;
 }
 
-bool ColCheck(int col) // To check col doesnt exceed size or are less than size
-{ 
+bool ColCheck(int col)
+{ // To check col doesnt exceed size or are less than size
     if (col >= Size || col < 0)
         return 0;
 
@@ -301,8 +233,8 @@ bool ColCheck(int col) // To check col doesnt exceed size or are less than size
         return 1;
 }
 
-bool BombCheck(int row, int col) // To check if bomb is there
-{ 
+bool BombCheck(int row, int col)
+{ // To check if bomb is there
 
     if (RowCheck(row) && ColCheck(col))
     { // To check row and col dont exceed size or are less than size
@@ -313,9 +245,8 @@ bool BombCheck(int row, int col) // To check if bomb is there
 
     return 0;
 }
-
-int BombCount() // Counts the bombs at particular time
-{ 
+int BombCount()
+{ // Counts the bombs at particular time
     int count = 0;
     for (int row = 0; row < Size; row++)
     {
@@ -328,8 +259,8 @@ int BombCount() // Counts the bombs at particular time
     return count;
 }
 
-int FlagCount() // Counts the number of flags at particular time
-{ 
+int FlagCount()
+{ // Counts the number of flags at particular time
     int count = 0;
     for (int row = 0; row < Size; row++)
     {
@@ -342,8 +273,8 @@ int FlagCount() // Counts the number of flags at particular time
     return count;
 }
 
-void Space() // Will replace all the 0s in the backend array with spaces in the frontend array
-{ 
+void Space()
+{ // Will replace all the 0s in the backend array with spaces in the frontend array
     for (int row = 0; row < Size; row++)
     {
         for (int col = 0; col < Size; col++)
@@ -354,16 +285,8 @@ void Space() // Will replace all the 0s in the backend array with spaces in the 
     }
 }
 
-bool IsUsed(int row, int col) // if alr a number occupies that Place
-{ 
-
-    if (BackEnd[row][col] == 'U')
-        return 1;
-    return 0;
-}
-
-bool isSpace(int row, int col) // To check if it is space or not
-{ 
+bool isSpace(int row, int col)
+{ // To check if it is space or not
     if (BackEnd[row][col] == '0')
         return 1;
     return 0;
@@ -393,8 +316,8 @@ bool AnyMinesLeft()
     return 0;
 }
 
-int CountBomb(int row, int col) // will count bombs around a position
-{ 
+int CountBomb(int row, int col)
+{ // will count bombs around a position
     int count = 0;
 
     if (RowCheck(row + 1))
@@ -446,39 +369,10 @@ int CountBomb(int row, int col) // will count bombs around a position
     return count;
 }
 
-void Assign() //Will assign bomb after counting
+void Assign()
 { // will assign that position to the number, works in tandem with count bomb
     for (int row = 0; row < Size; row++)
         for (int col = 0; col < Size; col++)
             if (!BombCheck(row, col))
                 BackEnd[row][col] = '0' + CountBomb(row, col); // '0' to convert to char
-}
-
-void File(int score, int &playtime) //check highscores
-{
-    ofstream Scores("scores.txt");
-    Scores << score << endl;
-    Scores.close();
-    playtime++;
-}
-
-void CheckScore(int score, int playtime) // check highscores
-{
-    ifstream scores;
-    scores.open("C:\\TEMP\\scores.txt");
-    int biggestsofar = 0;
-    int newscore;
-    bool isTrue = 0;
-    for (int i = 0; i < playtime; i++)
-    {
-        scores >> newscore;
-        if (newscore >= biggestsofar)
-        {
-            biggestsofar = newscore;
-        }
-    }
-    if (biggestsofar <= score && score != 0)
-        cout << "You achieve a new high score of " << score << endl;
-    else
-        cout << "You failed to achieve a high score, your score is " << score << endl;
 }
